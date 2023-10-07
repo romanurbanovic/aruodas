@@ -10,4 +10,6 @@ public class Helper {
         driver.get("https://www.aruodas.lt/ideti-skelbima/?obj=10");
         driver.findElement(By.id("onetrust-accept-btn-handler")).click();
     }
+
+
 }

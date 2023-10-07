@@ -14,7 +14,6 @@ public class RealEstate {
     public String city;
     public String microdistrict;
     public String street;
-    public String objectTipe;
     public String discription;
     public String picture;
     public String url;
@@ -27,15 +26,14 @@ public class RealEstate {
     public boolean rulesCheckBox;
 
 
-    public RealEstate(String municipality, String city, String microdistrict, String street, String objectTipe,
+    public RealEstate(String municipality, String city, String microdistrict, String street,
                       String discription, String picture, String url, String threeDtour, String price,
                       String phone, String email, boolean emailCheckBox, boolean chatCheckBox, boolean rulesCheckBox) {
 
-        this.municipality = municipality;
-        this.city = city;
+        this.municipality = municipality.toLowerCase();
+        this.city = city.toLowerCase();
         this.microdistrict = microdistrict.toLowerCase();
-        this.street = street;
-        this.objectTipe = objectTipe;
+        this.street = street.toLowerCase();
         this.discription = discription;
         this.picture = "C:\\Users\\Fiberta\\Desktop\\" + picture;
         this.url = url;
@@ -49,60 +47,88 @@ public class RealEstate {
         driver = Helper.driver;
     }
 
-    public void fillAdvertForm() throws InterruptedException {
-        setMunicipality();
-        setCity();
-        setMicrodistrict();
-        Thread.sleep(5000);
-        setStreet();
-        setObjectTipe();
-        driver.findElement(By.name("notes_lt")).sendKeys(discription);
-        driver.findElement(By.xpath("//*[@id=\"uploadPhotoBtn\"]/input")).sendKeys(this.picture);
-        driver.findElement(By.name("Video")).sendKeys(this.url);
-        driver.findElement(By.name("tour_3d")).sendKeys(this.threeDtour);
-        driver.findElement(By.id("priceField")).sendKeys(price);
-        driver.findElement(By.name("phone")).sendKeys(phone);
-        driver.findElement(By.name("email")).sendKeys(email);
-        driver.findElement(By.xpath("//*[@id=\"newObjectForm\"]/ul/li[23]/span/label")).click();
-        driver.findElement(By.xpath("//*[@id=\"newObjectForm\"]/ul/li[24]/div/div")).click();
-        driver.findElement(By.xpath("//*[@id=\"newObjectForm\"]/ul/li[25]/span[1]/div/div/label/span")).click();
-        //    driver.findElement(By.id("submitFormButton")).click();
+    public void fillAdvertForm(){
+        setLocation(0,municipality);
+        setLocation(1,city);
+        setLocation(2,microdistrict);
+        setLocation(3,street);
+        setDiscription();
+        uploadpicture();
+        uploadUrl();
+        uploadThreeDtour();
+        setPrice();
+        setPhone();
+        setEmail();
+        clickEmailContact();
+        clickChatContakt();
+        clickRulesAgreement();
+        driver.findElement(By.id("submitFormButton")).click();
     }
 
-    public void setMunicipality() {
-        driver.findElement(By.xpath("//*[@id=\"newObjectForm\"]/ul/li[3]/span[1]/span")).click();
-        driver.findElement(By.xpath("//*[@id=\"regionDropdown\"]/li[2]")).click();
-    }
+    public void setLocation(int pos, String location){
+        try {
+            WebElement span = driver.findElements(By.className("input-style-dropdown")).get(pos);
+            Thread.sleep(500);
+            span.findElement(By.className("dropdown-input-value-title")).click();
+            WebElement ul = span.findElement(By.className("dropdown-input-values-address"));
+            if (ul.findElements(By.tagName("input")).isEmpty()) {
+                for (WebElement li : ul.findElements(By.tagName("li"))) {
+                    if (li.getText().toLowerCase().contains(location)) {
+                        li.click();
+                        break;
+                    }
+                }
+            } else {
+                int count = ul.findElements(By.tagName("li")).size();
+                ul.findElement(By.tagName("input")).sendKeys(location);
+                while (true) {
+                    List<WebElement> lis = ul.findElements(By.tagName("li"));
+                    if (count != lis.size()) {
+                        lis.get(lis.size() - 1).click();
+                        break;
+                    }
+                }
 
-    public void setCity() {
-        driver.findElement(By.id("districtTitle")).click();
-        driver.findElement(By.xpath("//*[@id=\"districts_461\"]/li[2]")).click();
-    }
 
-    public void setMicrodistrict() {
-//        driver.findElement(By.id("quartalTitle")).click();
-//        driver.findElement(By.xpath("//*[@id=\"quartals_1\"]/li[2]")).click();
-
-        WebElement municipalityList = driver.findElement(By.id("quartalTitle"));
-        municipalityList.click();
-        List<WebElement> md = driver.findElements(By.className("drop-down-value-row"));
-        for (WebElement mun : md) {
-            if (mun.getText().toLowerCase().contains(microdistrict)) {
-                mun.click();
-                break;
             }
-
-        }
+        }catch (Exception e){}
     }
 
-    public void setStreet() {
-        driver.findElement(By.id("streetTitle")).click();
-        driver.findElement(By.xpath("//*[@id=\"streets_1\"]/li[5]")).click();
-    }
 
-    public void setObjectTipe() {
-        driver.findElement(By.xpath("//*[@id=\"newObjectForm\"]/ul/li[7]/span[1]")).click();
-        driver.findElement(By.xpath("//*[@id=\"newObjectForm\"]/ul/li[7]/span[1]/ul/li[1]")).click();
-    }
-
+public void setDiscription(){
+    driver.findElement(By.name("notes_lt")).sendKeys(discription);
+}
+public void uploadpicture(){
+    driver.findElement(By.xpath("//*[@id=\"uploadPhotoBtn\"]/input")).sendKeys(this.picture);
+}
+public void uploadUrl(){
+    driver.findElement(By.name("Video")).sendKeys(this.url);
+}
+public void uploadThreeDtour(){
+    driver.findElement(By.name("tour_3d")).sendKeys(this.threeDtour);
+}
+public void setPrice(){
+    driver.findElement(By.id("priceField")).sendKeys(price);
+}
+public void setPhone(){
+    driver.findElement(By.name("phone")).sendKeys(phone);
+}
+public void setEmail(){
+    driver.findElement(By.name("email")).sendKeys(email);
+}
+public void clickEmailContact(){
+    WebElement liList  = driver.findElement(By.id("newObjectForm"));
+    List<WebElement> list = driver.findElements(By.tagName("li"));
+    list.get(list.size() - 5).findElement(By.tagName("span")).click();
+}
+public void clickChatContakt(){
+    WebElement liList  = driver.findElement(By.id("newObjectForm"));
+    List<WebElement> list = driver.findElements(By.tagName("li"));
+    list.get(list.size() - 4).findElement(By.tagName("span")).click();
+}
+public void clickRulesAgreement(){
+    WebElement liList  = driver.findElement(By.id("newObjectForm"));
+    List<WebElement> list = driver.findElements(By.tagName("li"));
+    list.get(list.size() - 3).findElement(By.xpath("//*/span[1]/div/div/label/span")).click();
+}
 }
