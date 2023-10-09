@@ -1,5 +1,5 @@
 import models.Helper;
-import models.SearchRealEstate;
+import models.REObject;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -7,11 +7,11 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class SearchRealEstateTests {
+public class REObjectTests {
 
     @Test
     public void searchRealEstatePositive() {
-        SearchRealEstate re = new SearchRealEstate("Vilnius","Vilniaus","BUk",
+        REObject re = new REObject("Vilnius","Vilniaus","BUk",
                    "A. Jakšto", "2 kambariu butas",
                    "testScenarioCase.png","https://www.youtube.com/watch?v=DMNKqsIkq3I",
                    "https://www.youtube.com/watch?v=DMNKqsIkq3I","160000",

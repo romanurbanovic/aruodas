@@ -24,11 +24,15 @@ public class RealEstate {
     public boolean emailCheckBox;
     public boolean chatCheckBox;
     public boolean rulesCheckBox;
-
+    public String rcNumber;
+    public String area;
+    public String addressNumber;
 
     public RealEstate(String municipality, String city, String microdistrict, String street,
                       String discription, String picture, String url, String threeDtour, String price,
-                      String phone, String email, boolean emailCheckBox, boolean chatCheckBox, boolean rulesCheckBox) {
+                      String phone, String email,
+                      boolean emailCheckBox, boolean chatCheckBox, boolean rulesCheckBox,
+    String rcNumber, String area, String addressNumber) {
 
         this.municipality = municipality.toLowerCase();
         this.city = city.toLowerCase();
@@ -44,7 +48,12 @@ public class RealEstate {
         this.emailCheckBox = emailCheckBox;
         this.chatCheckBox = chatCheckBox;
         this.rulesCheckBox = rulesCheckBox;
+        this.rcNumber = rcNumber;
+        this.addressNumber = addressNumber;
+        this.area = area;
         driver = Helper.driver;
+        System.out.println(rcNumber + " in parent constructor");
+
     }
 
     public void fillAdvertForm(){
@@ -52,6 +61,9 @@ public class RealEstate {
         setLocation(1,city);
         setLocation(2,microdistrict);
         setLocation(3,street);
+        setAddressNumber();
+        setRcNumber();
+        setArea();
         setDiscription();
         uploadpicture();
         uploadUrl();
@@ -62,7 +74,20 @@ public class RealEstate {
         clickEmailContact();
         clickChatContakt();
         clickRulesAgreement();
+    }
+
+    public void submit(){
         driver.findElement(By.id("submitFormButton")).click();
+    }
+    public void setAddressNumber(){
+        driver.findElement(By.name("FHouseNum")).sendKeys(addressNumber);
+    }
+    public void setArea() {
+        driver.findElement(By.name("FAreaOverAll")).sendKeys(area);
+    }
+    public void setRcNumber() {
+        System.out.println(rcNumber + " in method");
+        driver.findElement(By.name("RCNumber")).sendKeys(rcNumber);
     }
 
     public void setLocation(int pos, String location){

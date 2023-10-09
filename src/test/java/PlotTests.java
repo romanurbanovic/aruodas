@@ -1,5 +1,5 @@
 import models.Helper;
-import models.SearchPlot;
+import models.Plot;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -7,10 +7,10 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class SearchPlotTests {
+public class PlotTests {
  @Test
     public void searchPlotPositve(){
-     SearchPlot sp = new SearchPlot("Vilnius","Vilniaus","BUk",
+     Plot sp = new Plot("Vilnius","Vilniaus","BUk",
              "A. Jakšto", "sklypas ",
              "testScenarioCase.png","https://www.youtube.com/watch?v=DMNKqsIkq3I",
              "https://www.youtube.com/watch?v=DMNKqsIkq3I","100000",
