@@ -27,12 +27,13 @@ public class RealEstate {
     public String rcNumber;
     public String area;
     public String addressNumber;
+    public String action;
 
     public RealEstate(String municipality, String city, String microdistrict, String street,
                       String discription, String picture, String url, String threeDtour, String price,
                       String phone, String email,
                       boolean emailCheckBox, boolean chatCheckBox, boolean rulesCheckBox,
-    String rcNumber, String area, String addressNumber) {
+                      String rcNumber, String area, String addressNumber, String action) {
 
         this.municipality = municipality.toLowerCase();
         this.city = city.toLowerCase();
@@ -51,19 +52,19 @@ public class RealEstate {
         this.rcNumber = rcNumber;
         this.addressNumber = addressNumber;
         this.area = area;
+        this.action = action.toLowerCase();
         driver = Helper.driver;
-        System.out.println(rcNumber + " in parent constructor");
-
     }
 
-    public void fillAdvertForm(){
-        setLocation(0,municipality);
-        setLocation(1,city);
-        setLocation(2,microdistrict);
-        setLocation(3,street);
+    public void fillAdvertForm() {
+        setLocation(0, municipality);
+        setLocation(1, city);
+        setLocation(2, microdistrict);
+        setLocation(3, street);
         setAddressNumber();
         setRcNumber();
         setArea();
+        setAction();
         setDiscription();
         uploadpicture();
         uploadUrl();
@@ -76,21 +77,34 @@ public class RealEstate {
         clickRulesAgreement();
     }
 
-    public void submit(){
+    public void submit() {
         driver.findElement(By.id("submitFormButton")).click();
     }
-    public void setAddressNumber(){
+
+    public void setAddressNumber() {
         driver.findElement(By.name("FHouseNum")).sendKeys(addressNumber);
     }
+
     public void setArea() {
         driver.findElement(By.name("FAreaOverAll")).sendKeys(area);
     }
+
     public void setRcNumber() {
-        System.out.println(rcNumber + " in method");
         driver.findElement(By.name("RCNumber")).sendKeys(rcNumber);
     }
 
-    public void setLocation(int pos, String location){
+    public void setAction() {
+        List<WebElement> opt = driver.findElements(By.className("input-button-text"));
+        for (WebElement op : opt) {
+            if (op.getText().toLowerCase().contains(action)) {
+                op.click();
+                break;
+            }
+        }
+
+    }
+
+    public void setLocation(int pos, String location) {
         try {
             WebElement span = driver.findElements(By.className("input-style-dropdown")).get(pos);
             Thread.sleep(500);
@@ -116,44 +130,51 @@ public class RealEstate {
 
 
             }
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
     }
 
 
-public void setDiscription(){
-    driver.findElement(By.name("notes_lt")).sendKeys(discription);
-}
-public void uploadpicture(){
-    driver.findElement(By.xpath("//*[@id=\"uploadPhotoBtn\"]/input")).sendKeys(this.picture);
-}
-public void uploadUrl(){
-    driver.findElement(By.name("Video")).sendKeys(this.url);
-}
-public void uploadThreeDtour(){
-    driver.findElement(By.name("tour_3d")).sendKeys(this.threeDtour);
-}
-public void setPrice(){
-    driver.findElement(By.id("priceField")).sendKeys(price);
-}
-public void setPhone(){
-    driver.findElement(By.name("phone")).sendKeys(phone);
-}
-public void setEmail(){
-    driver.findElement(By.name("email")).sendKeys(email);
-}
-public void clickEmailContact(){
-    WebElement liList  = driver.findElement(By.id("newObjectForm"));
-    List<WebElement> list = driver.findElements(By.tagName("li"));
-    list.get(list.size() - 5).findElement(By.tagName("span")).click();
-}
-public void clickChatContakt(){
-    WebElement liList  = driver.findElement(By.id("newObjectForm"));
-    List<WebElement> list = driver.findElements(By.tagName("li"));
-    list.get(list.size() - 4).findElement(By.tagName("span")).click();
-}
-public void clickRulesAgreement(){
-    WebElement liList  = driver.findElement(By.id("newObjectForm"));
-    List<WebElement> list = driver.findElements(By.tagName("li"));
-    list.get(list.size() - 3).findElement(By.xpath("//*/span[1]/div/div/label/span")).click();
-}
+    public void setDiscription() {
+        driver.findElement(By.name("notes_lt")).sendKeys(discription);
+    }
+
+    public void uploadpicture() {
+        driver.findElement(By.xpath("//*[@id=\"uploadPhotoBtn\"]/input")).sendKeys(this.picture);
+    }
+
+    public void uploadUrl() {
+        driver.findElement(By.name("Video")).sendKeys(this.url);
+    }
+
+    public void uploadThreeDtour() {
+        driver.findElement(By.name("tour_3d")).sendKeys(this.threeDtour);
+    }
+
+    public void setPrice() {
+        driver.findElement(By.id("priceField")).sendKeys(price);
+    }
+
+    public void setPhone() {
+        driver.findElement(By.name("phone")).sendKeys(phone);
+    }
+
+    public void setEmail() {
+        driver.findElement(By.name("email")).sendKeys(email);
+    }
+
+    public void clickEmailContact() {
+        List<WebElement> list = driver.findElements(By.tagName("li"));
+        list.get(list.size() - 5).findElement(By.tagName("span")).click();
+    }
+
+    public void clickChatContakt() {
+        List<WebElement> list = driver.findElements(By.tagName("li"));
+        list.get(list.size() - 4).findElement(By.tagName("span")).click();
+    }
+
+    public void clickRulesAgreement() {
+        List<WebElement> list = driver.findElements(By.tagName("li"));
+        list.get(list.size() - 3).findElement(By.xpath("//*/span[1]/div/div/label/span")).click();
+    }
 }

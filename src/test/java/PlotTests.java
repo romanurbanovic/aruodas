@@ -15,7 +15,7 @@ public class PlotTests {
              "testScenarioCase.png","https://www.youtube.com/watch?v=DMNKqsIkq3I",
              "https://www.youtube.com/watch?v=DMNKqsIkq3I","100000",
              "65000000", "a@kk.vv",true,true,true,
-             "Pardavimui","12345","4444-4444-4444","40","Namų valda");
+             "Nuom","12345","4444-4444-4444","40",new int[] {1,2,4});
      sp.fillAdvertForm();
     }
 
