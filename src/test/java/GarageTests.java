@@ -12,10 +12,10 @@ public class GarageTests {
 public void searchGaragePositive(){
     Garage sg = new Garage("Vilnius","Vilniaus","BUk",
             "A. Jakšto", "garazas ",
-            "testScenarioCase.png","https://www.youtube.com/watch?v=DMNKqsIkq3I",
+            "Chrysanthemum.jpg","https://www.youtube.com/watch?v=DMNKqsIkq3I",
             "https://www.youtube.com/watch?v=DMNKqsIkq3I","20000",
             "65000000", "a@kk.vv",true,true,true,
-            "3333-3333-3333","6","5555","Garage","Nuom","Kita","1");
+            "3333-3333-3333","6","5555","Garage","Nuom","Kita","6");
     sg.fillAdvertForm();
 }
 

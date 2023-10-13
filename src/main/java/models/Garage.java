@@ -21,7 +21,7 @@ public class Garage extends RealEstate{
         super.fillAdvertForm();
         setType();
         setMake();
-    //    setAccommodates();
+        setAccommodates();
     //    submit();
     }
     public void setMake() {
@@ -47,19 +47,19 @@ public class Garage extends RealEstate{
     public void setAccommodates() {
         switch (accommodates) {
             case "1":
-                driver.findElement(By.xpath("//label[contains(@for,'cb_FIntendance_property')]")).click();
+                driver.findElement(By.xpath("//div[contains(@data-title,'1')]")).click();
                 break;
             case "2":
-                driver.findElement(By.xpath("//label[contains(@for,'cb_FIntendance_manufacturingland')]")).click();
+                driver.findElement(By.xpath("//div[contains(@data-title,'2')]")).click();
                 break;
             case "3":
-                driver.findElement(By.xpath("//label[contains(@for,'cb_FIntendance_farm')]")).click();
+                driver.findElement(By.xpath("//div[contains(@data-title,'3')]")).click();
                 break;
             case "4":
-                driver.findElement(By.xpath("//label[contains(@for,'cb_FIntendance_garden')]")).click();
+                driver.findElement(By.xpath("//div[contains(@data-title,'4')]")).click();
                 break;
             default:
-                driver.findElement(By.xpath("//label[contains(@for,'cb_FIntendance_forest')]")).sendKeys(accommodates);
+                driver.findElement(By.xpath("//input[contains(@placeholder,'Įveskite')]")).sendKeys(accommodates);
                 break;
         }
     }

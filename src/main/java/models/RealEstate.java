@@ -40,7 +40,7 @@ public class RealEstate {
         this.microdistrict = microdistrict.toLowerCase();
         this.street = street.toLowerCase();
         this.discription = discription;
-        this.picture = "C:\\Users\\Fiberta\\Desktop\\" + picture;
+        this.picture = "C:\\Users\\Public\\Pictures\\Sample Pictures\\" + picture;
         this.url = url;
         this.threeDtour = threeDtour;
         this.price = price;
