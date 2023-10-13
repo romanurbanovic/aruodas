@@ -15,7 +15,8 @@ public void searchGaragePositive(){
             "Chrysanthemum.jpg","https://www.youtube.com/watch?v=DMNKqsIkq3I",
             "https://www.youtube.com/watch?v=DMNKqsIkq3I","20000",
             "65000000", "a@kk.vv",true,true,true,
-            "3333-3333-3333","6","5555","Garage","Nuom","Kita","6");
+            "3333-3333-3333","6","5555","Vieta automobiliui",
+            "Nuom","Daugiaaukštėje aikštelėje","6");
     sg.fillAdvertForm();
 }
 

@@ -2,7 +2,7 @@ package models;
 
 import org.openqa.selenium.By;
 
-public class Garage extends RealEstate{
+public class Garage extends RealEstate {
 
     public String type;
     public String make;
@@ -16,14 +16,15 @@ public class Garage extends RealEstate{
     }
 
     @Override
-    public void fillAdvertForm(){
+    public void fillAdvertForm() {
         driver.get("https://www.aruodas.lt/ideti-skelbima/?obj=13");
         super.fillAdvertForm();
         setType();
         setMake();
         setAccommodates();
-    //    submit();
+        //    submit();
     }
+
     public void setMake() {
         switch (make) {
             case "Mūrinis":
@@ -39,7 +40,23 @@ public class Garage extends RealEstate{
                 driver.findElement(By.xpath("//div[contains(@data-value,'4')]")).click();
                 break;
             case "Kita":
-                driver.findElement(By.xpath("//div[contains(@data-value,'9')]")).click();
+                switch (type) {
+                    case "Vieta automobiliui":
+                        driver.findElement(By.xpath("//div[contains(@data-value,'104')]")).click();
+                        break;
+                    case "Garažas":
+                        driver.findElement(By.xpath("//div[contains(@data-value,'9')]")).click();
+                        break;
+                }
+                break;
+            case "Požeminėje aikštelėje":
+                driver.findElement(By.xpath("//div[contains(@data-value,'101')]")).click();
+                break;
+            case "Antžeminėje aikštelėje":
+                driver.findElement(By.xpath("//div[contains(@data-value,'102')]")).click();
+                break;
+            case "Daugiaaukštėje aikštelėje":
+                driver.findElement(By.xpath("//div[contains(@data-value,'103')]")).click();
                 break;
         }
     }
@@ -64,8 +81,15 @@ public class Garage extends RealEstate{
         }
     }
 
-    public void setType(){
-        driver.findElement(By.xpath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[1]/div[2]")).click();
+    public void setType() {
+        switch (type) {
+            case "Vieta automobiliui":
+                driver.findElement(By.xpath("//label[contains(@for,'parking_parking')]")).click();
+                break;
+            case "Garažas":
+                driver.findElement(By.xpath("//label[contains(@for,'parking_garage')]")).click();
+                break;
+        }
     }
 }
 
