@@ -27,19 +27,19 @@ public class Garage extends RealEstate{
     public void setMake() {
         switch (make) {
             case "Mūrinis":
-                driver.findElement(By.xpath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[1]/div[2]")).click();
+                driver.findElement(By.xpath("//div[contains(@data-value,'1')]")).click();
                 break;
             case "Geležinis":
-                driver.findElement(By.xpath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[2]/div[2]")).click();
+                driver.findElement(By.xpath("//div[contains(@data-value,'2')]")).click();
                 break;
             case "Požeminis":
-                driver.findElement(By.xpath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[3]/div[2]")).click();
+                driver.findElement(By.xpath("//div[contains(@data-value,'3')]")).click();
                 break;
             case "Daugiaaukštis":
-                driver.findElement(By.xpath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[4]/div[2]")).click();
+                driver.findElement(By.xpath("//div[contains(@data-value,'4')]")).click();
                 break;
             case "Kita":
-                driver.findElement(By.xpath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[5]/div[2]")).click();
+                driver.findElement(By.xpath("//div[contains(@data-value,'9')]")).click();
                 break;
         }
     }
