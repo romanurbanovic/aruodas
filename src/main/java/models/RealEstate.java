@@ -97,6 +97,7 @@ public class RealEstate {
         List<WebElement> opt = driver.findElements(By.className("input-button-text"));
         for (WebElement op : opt) {
             if (op.getText().toLowerCase().contains(action)) {
+                System.out.println(op.getText());
                 op.click();
                 break;
             }
