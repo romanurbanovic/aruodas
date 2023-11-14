@@ -10,17 +10,22 @@ public class Garage extends RealEstate {
     public String type;
     public String make;
     public String accommodates;
-    public String[] detail;
+    public String[] feature;
+    public boolean exchange;
+    public boolean auction;
 
     public Garage(String municipality, String city, String microdistrict, String street, String discription, String picture,
                   String url, String threeDtour, String price, String phone, String email, boolean emailCheckBox,
                   boolean chatCheckBox, boolean rulesCheckBox, String rcNumber, String area, String addressNumber,
-                  String type, String action, String make, String accommodates, String[] detail) {
+                  String type, String action, String make, String accommodates, String[] feature,
+                  boolean exchange, boolean auction) {
         super(municipality, city, microdistrict, street, discription, picture, url, threeDtour, price, phone, email, emailCheckBox, chatCheckBox, rulesCheckBox, rcNumber, area, addressNumber, action);
         this.type = type.toLowerCase();
         this.make = make.toLowerCase();
         this.accommodates = accommodates;
-        this.detail = detail;
+        this.feature = feature;
+        this.exchange = exchange;
+        this.auction = auction;
     }
 
     @Override
@@ -30,7 +35,7 @@ public class Garage extends RealEstate {
         setType();
         setMake();
         setAccommodates();
-        setDetails();
+        setFeatures();
         //    submit();
     }
 
@@ -92,18 +97,24 @@ public class Garage extends RealEstate {
         }
     }
 
-    public void setDetails() {
+    public void setFeatures() {
         driver.findElement(By.id("showMoreFields")).click();
         driver.findElement(By.xpath("//*[@id=\"newObjectForm\"]/ul/li[22]/div"));
         List<WebElement> det = driver.findElements(By.xpath("//label[contains(@for,'cb_FGarageFeatures')]"));
         for (WebElement details : det) {
-            for (int i = 0; i < detail.length; i++) {
+            for (int i = 0; i < feature.length; i++) {
 
-                if (details.getText().contains(detail[i])) {
+                if (details.getText().contains(feature[i])) {
                     System.out.println(details.getText());
                     details.click();
                 }
             }
+        }
+        if (exchange == true) {
+            driver.findElement(By.xpath("//label[contains(@for,'cbInterestedChange')]")).click();
+        }
+        if (auction == true) {
+            driver.findElement(By.xpath("//label[contains(@for,'cbAuction')]")).click();
         }
     }
 }
