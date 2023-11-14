@@ -9,8 +9,8 @@ import java.time.Duration;
 
 public class PlotTests {
  @Test
-    public void searchPlotPositve(){
-     Plot sp = new Plot("Vilnius","Vilniaus","BUk",
+    public void searchPlotPositve() {
+     Plot sp = new Plot ("Vilnius","Vilniaus","BUk",
              "A. Jakšto", "sklypas ",
              "testScenarioCase.png","https://www.youtube.com/watch?v=DMNKqsIkq3I",
              "https://www.youtube.com/watch?v=DMNKqsIkq3I","100000",
@@ -20,7 +20,7 @@ public class PlotTests {
     }
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         Helper.driver = new ChromeDriver();
         Helper.driver.manage().window().maximize();
         Helper.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -28,7 +28,7 @@ public class PlotTests {
     }
 
     @AfterClass
-    public void afterClass(){
+    public void afterClass() {
 
     }
 }

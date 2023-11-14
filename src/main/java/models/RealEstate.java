@@ -29,7 +29,7 @@ public class RealEstate {
     public String addressNumber;
     public String action;
 
-    public RealEstate(String municipality, String city, String microdistrict, String street,
+    public RealEstate (String municipality, String city, String microdistrict, String street,
                       String discription, String picture, String url, String threeDtour, String price,
                       String phone, String email,
                       boolean emailCheckBox, boolean chatCheckBox, boolean rulesCheckBox,
@@ -105,7 +105,7 @@ public class RealEstate {
 
     }
 
-    public void setLocation(int pos, String location) {
+    public void setLocation (int pos, String location) {
         try {
             WebElement span = driver.findElements(By.className("input-style-dropdown")).get(pos);
             Thread.sleep(500);
@@ -135,14 +135,11 @@ public class RealEstate {
         }
     }
 
-
     public void setDiscription() {
         driver.findElement(By.name("notes_lt")).sendKeys(discription);
     }
 
-    public void uploadpicture() {
-        driver.findElement(By.xpath("//*[@id=\"uploadPhotoBtn\"]/input")).sendKeys(this.picture);
-    }
+    public void uploadpicture() { driver.findElement(By.xpath("//*[@id=\"uploadPhotoBtn\"]/input")).sendKeys(this.picture);}
 
     public void uploadUrl() {
         driver.findElement(By.name("Video")).sendKeys(this.url);

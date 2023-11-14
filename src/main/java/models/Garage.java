@@ -25,65 +25,29 @@ public class Garage extends RealEstate {
         //    submit();
     }
 
-//    public void setMake() {
-//        switch (make) {
-//            case make:
-//                driver.findElement(By.xpath("//div[contains(@data-value,'1')]")).click();
-//                break;
-//            case "Geležinis":
-//                driver.findElement(By.xpath("//div[contains(@data-value,'2')]")).click();
-//                break;
-//            case "Požeminis":
-//                driver.findElement(By.xpath("//div[contains(@data-value,'3')]")).click();
-//                break;
-//            case "Daugiaaukštis":
-//                driver.findElement(By.xpath("//div[contains(@data-value,'4')]")).click();
-//                break;
-//            case "Kita":
-//                switch (type) {
-//                    case "Vieta automobiliui":
-//                        driver.findElement(By.xpath("//div[contains(@data-value,'104')]")).click();
-//                        break;
-//                    case "Garažas":
-//                        driver.findElement(By.xpath("//div[contains(@data-value,'9')]")).click();
-//                        break;
-//                }
-//                break;
-//            case "Požeminėje aikštelėje":
-//                driver.findElement(By.xpath("//div[contains(@data-value,'101')]")).click();
-//                break;
-//            case "Antžeminėje aikštelėje":
-//                driver.findElement(By.xpath("//div[contains(@data-value,'102')]")).click();
-//                break;
-//            case "Daugiaaukštėje aikštelėje":
-//                driver.findElement(By.xpath("//div[contains(@data-value,'103')]")).click();
-//                break;
-//        }
-//    }
-
-    public void setMake(){
-        if (make.contains("mu")){
+    public void setMake() {
+        if (make.contains("mu")) {
             driver.findElement(By.xpath("//div[contains(@data-title,'Mūrinis')]")).click();
-        }else if (make.contains("gel")){
+        }else if (make.contains("gel")) {
             driver.findElement(By.xpath("//div[contains(@data-title,'Geležinis')]")).click();
-        }else if (make.contains("po")){
+        }else if (make.contains("po")) {
             if (type.contains("viet")) {
                 driver.findElement(By.xpath("//div[contains(@data-value,'101')]")).click();
             }else {
                 driver.findElement(By.xpath("//div[contains(@data-value,'3')]")).click();
             }
         }
-        else if (make.contains("daug")){
-            if (type.contains("viet")){
+        else if (make.contains("daug")) {
+            if (type.contains("viet")) {
                 driver.findElement(By.xpath("//div[contains(@data-value,'103')]")).click();
-            }else {
+            } else {
                 driver.findElement(By.xpath("//div[contains(@data-value,'4')]")).click();
             }
         }
-        if (make.contains("kit")){
-            if (type.contains("viet")){
+        if (make.contains("kit")) {
+            if (type.contains("viet")) {
                 driver.findElement(By.xpath("//div[contains(@data-value,'104')]")).click();
-            }else {
+            } else {
                 driver.findElement(By.xpath("//div[contains(@data-value,'9')]")).click();
             }
         }
@@ -115,7 +79,7 @@ public class Garage extends RealEstate {
     public void setType() {
         if (type.contains("viet")) {
             driver.findElement(By.xpath("//label[contains(@for,'parking_parking')]")).click();
-        }else {
+        } else {
             driver.findElement(By.xpath("//label[contains(@for,'parking_garage')]")).click();
         }
     }

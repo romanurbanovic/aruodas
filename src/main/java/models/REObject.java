@@ -10,7 +10,7 @@ public class REObject extends RealEstate {
 
     public String objectType;
 
-    public REObject(String municipality, String city, String microdistrict, String street, String discription, String picture, String url, String threeDtour, String price, String phone, String email, boolean emailCheckBox, boolean chatCheckBox, boolean rulesCheckBox, String objectType) {
+    public REObject (String municipality, String city, String microdistrict, String street, String discription, String picture, String url, String threeDtour, String price, String phone, String email, boolean emailCheckBox, boolean chatCheckBox, boolean rulesCheckBox, String objectType) {
         super(municipality, city, microdistrict, street, discription, picture, url, threeDtour, price, phone, email, emailCheckBox, chatCheckBox, rulesCheckBox, "", "","", "");
         this.objectType = objectType.toLowerCase();
     }
@@ -24,15 +24,15 @@ public class REObject extends RealEstate {
     }
 
     @Override
-    public void setAddressNumber(){
+    public void setAddressNumber() {
 
     }
     @Override
-    public void setArea(){
+    public void setArea() {
 
     }
     @Override
-    public void setRcNumber(){
+    public void setRcNumber() {
 
     }
 
