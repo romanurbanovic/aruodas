@@ -6,7 +6,10 @@ public class Plot extends RealEstate {
 
     public int[] purpose;
 
-    public Plot (String municipality, String city, String microdistrict, String street, String discription, String picture, String url, String threeDtour, String price, String phone, String email, boolean emailCheckBox, boolean chatCheckBox, boolean rulesCheckBox, String action, String addressNumber, String rcNumber, String area, int[] purpose) {
+    public Plot (String municipality, String city, String microdistrict, String street, String discription, String picture,
+                 String url, String threeDtour, String price, String phone, String email, boolean emailCheckBox,
+                 boolean chatCheckBox, boolean rulesCheckBox, String action, String addressNumber, String rcNumber,
+                 String area, int[] purpose) {
         super(municipality, city, microdistrict, street, discription, picture, url, threeDtour, price, phone, email, emailCheckBox, chatCheckBox, rulesCheckBox, rcNumber, area, addressNumber, action);
         this.purpose = purpose;
     }
