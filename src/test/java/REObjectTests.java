@@ -17,7 +17,7 @@ public class REObjectTests {
                 "A. Jakšto", "2 kambariu butas",
                 "testScenarioCase.png", "https://www.youtube.com/watch?v=DMNKqsIkq3I",
                 "https://www.youtube.com/watch?v=DMNKqsIkq3I", "160000",
-                "65000000", "a@kk.vv", true, true, true, "patalp");
+                "65000000", "a@kk.vv", true, true, true, true, true,"patalp");
         re.fillAdvertForm();
         String actual = Helper.driver.findElement(By.id("btPlanChooseOrder")).getText();
         Assert.assertEquals(actual, "Užsakyti");

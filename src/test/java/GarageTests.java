@@ -15,9 +15,8 @@ public class GarageTests {
                 "Chrysanthemum.jpg", "https://www.youtube.com/watch?v=DMNKqsIkq3I",
                 "https://www.youtube.com/watch?v=DMNKqsIkq3I", "20000",
                 "65000000", "a@kk.vv", true, true, true,
-                "3333-3333-3333", "6", "5555", "gar",
-                "Pard", "mu", "6", new String[]{"Apsauga", "Vanduo", "Duobė"},
-                true, true);
+                "3333-3333-3333", "40", "5555", "par",
+                true,true, "viet", "kit", "6", new String[]{"Apsauga", "Vanduo", "Duobė"});
         sg.fillAdvertForm();
     }
 
@@ -27,6 +26,7 @@ public class GarageTests {
         Helper.driver.manage().window().maximize();
         Helper.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         Helper.acceptCookies();
+
     }
 
     @AfterClass

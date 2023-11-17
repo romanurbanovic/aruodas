@@ -28,12 +28,14 @@ public class RealEstate {
     public String area;
     public String addressNumber;
     public String action;
+    public boolean exchange;
+    public boolean auction;
 
     public RealEstate (String municipality, String city, String microdistrict, String street,
                       String discription, String picture, String url, String threeDtour, String price,
                       String phone, String email,
                       boolean emailCheckBox, boolean chatCheckBox, boolean rulesCheckBox,
-                      String rcNumber, String area, String addressNumber, String action) {
+                      String rcNumber, String area, String addressNumber, String action, boolean exchange, boolean auction) {
 
         this.municipality = municipality.toLowerCase();
         this.city = city.toLowerCase();
@@ -53,6 +55,8 @@ public class RealEstate {
         this.addressNumber = addressNumber;
         this.area = area;
         this.action = action.toLowerCase();
+        this.exchange = exchange;
+        this.auction = auction;
         driver = Helper.driver;
     }
 
@@ -75,6 +79,7 @@ public class RealEstate {
         clickEmailContact();
         clickChatContakt();
         clickRulesAgreement();
+        setDetails();
     }
 
     public void submit() {
@@ -174,5 +179,15 @@ public class RealEstate {
     public void clickRulesAgreement() {
         List<WebElement> list = driver.findElements(By.tagName("li"));
         list.get(list.size() - 3).findElement(By.xpath("//*/span[1]/div/div/label/span")).click();
+    }
+
+    public void setDetails() {
+        driver.findElement(By.id("showMoreFields")).click();
+        if (exchange == true) {
+            driver.findElement(By.xpath("//label[contains(@for,'cbInterestedChange')]")).click();
+        }
+        if (auction == true) {
+            driver.findElement(By.xpath("//label[contains(@for,'cbAuction')]")).click();
+        }
     }
 }

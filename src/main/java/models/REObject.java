@@ -10,8 +10,11 @@ public class REObject extends RealEstate {
 
     public String objectType;
 
-    public REObject (String municipality, String city, String microdistrict, String street, String discription, String picture, String url, String threeDtour, String price, String phone, String email, boolean emailCheckBox, boolean chatCheckBox, boolean rulesCheckBox, String objectType) {
-        super(municipality, city, microdistrict, street, discription, picture, url, threeDtour, price, phone, email, emailCheckBox, chatCheckBox, rulesCheckBox, "", "","", "");
+    public REObject(String municipality, String city, String microdistrict, String street, String discription,
+                    String picture, String url, String threeDtour, String price, String phone, String email,
+                    boolean emailCheckBox, boolean chatCheckBox, boolean rulesCheckBox, boolean exchange, boolean auction, String objectType) {
+        super(municipality, city, microdistrict, street, discription, picture, url, threeDtour, price, phone,
+                email, emailCheckBox, chatCheckBox, rulesCheckBox, "", "", "", "", exchange, auction);
         this.objectType = objectType.toLowerCase();
     }
 
@@ -27,30 +30,31 @@ public class REObject extends RealEstate {
     public void setAddressNumber() {
 
     }
+
     @Override
     public void setArea() {
 
     }
+
     @Override
     public void setRcNumber() {
 
     }
 
     @Override
-    public void setAction(){
+    public void setAction() {
 
     }
 
     public void setObjectType() {
         driver.findElement(By.xpath("//*[@id=\"newObjectForm\"]/ul/li[7]/span[1]")).click();
         List<WebElement> lis = driver.findElements(By.className("dropdown-input-values"));
-        for (WebElement li: lis) {
-            if (li.getText().toLowerCase().contains(objectType)){
+        for (WebElement li : lis) {
+            if (li.getText().toLowerCase().contains(objectType)) {
                 li.click();
                 break;
             }
         }
-
 
 
     }
