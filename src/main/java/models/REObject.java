@@ -46,6 +46,11 @@ public class REObject extends RealEstate {
 
     }
 
+    @Override
+    public void setDetails() {
+
+    }
+
     public void setObjectType() {
         driver.findElement(By.xpath("//*[@id=\"newObjectForm\"]/ul/li[7]/span[1]")).click();
         List<WebElement> lis = driver.findElements(By.className("dropdown-input-values"));
