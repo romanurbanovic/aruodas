@@ -15,7 +15,8 @@ public class PlotTests {
              "Koala.jpg","https://www.youtube.com/watch?v=DMNKqsIkq3I",
              "https://www.youtube.com/watch?v=DMNKqsIkq3I","100000",
              "65000000", "a@kk.vv",true,true,true,
-             "4444-4444-4444","40","1234","pard", true,true, new int[] {1,2,4});
+             "4444-4444-4444","40","1234","pard", true,true,
+             new int[] {1,2,4}, new int[] {2,4,6,7});
      sp.fillAdvertForm();
     }
 

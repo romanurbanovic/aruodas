@@ -123,28 +123,5 @@ public class Garage extends RealEstate {
             }
         }
     }
-
-//    public void setFeatures() {
-//        driver.findElement(By.id("showMoreFields"));
-//        String[] feature;
-//        List<WebElement> det;
-//        if (type.contains("gar")) {
-//            feature = garageFeature;
-//            det = driver.findElements(By.xpath("//label[contains(@for,'cb_FGarageFeatures')]"));
-//        } else {
-//            feature = parkingFeature;
-//            det = driver.findElements(By.xpath("//label[contains(@for,'cb_FParkingFeatures')]"));
-//        }
-//        for (WebElement details : det) {
-//            for (int i = 0; i < feature.length; i++) {
-//
-//                if (details.getText().contains(feature[i])) {
-//                    System.out.println(details.getText());
-//                    details.click();
-//                }
-//            }
-//        }
-//    }
-
 }
 
