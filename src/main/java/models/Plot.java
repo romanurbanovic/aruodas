@@ -80,7 +80,7 @@ public class Plot extends RealEstate {
      * 1 - Eletra <br>
      * 2 - Dujos
      * 3 - Vanduo
-     * 4 - Kra6tinis sklypas
+     * 4 - Kraštinis sklypas
      * 5 - Greta miško
      * 6 - Be pastatų
      * 7 - Geodeziniai matavimi

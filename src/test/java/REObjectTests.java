@@ -15,13 +15,25 @@ public class REObjectTests {
     public void searchRealEstatePositive() {
         REObject re = new REObject("Vilnius", "Vilniaus", "BUk",
                 "A. Jakšto", "2 kambariu butas",
-                "testScenarioCase.png", "https://www.youtube.com/watch?v=DMNKqsIkq3I",
+                "Hydrangeas.jpg", "https://www.youtube.com/watch?v=DMNKqsIkq3I",
                 "https://www.youtube.com/watch?v=DMNKqsIkq3I", "160000",
-                "65000000", "a@kk.vv", true, true, true, true, true,"patalp");
+                "862200000", "a@kk.vv", true, true, true, true, true,"patalp");
         re.fillAdvertForm();
         String actual = Helper.driver.findElement(By.id("btPlanChooseOrder")).getText();
         Assert.assertEquals(actual, "Užsakyti");
     }
+
+   @Test
+public void stsearchRealEstateNoPhoneNumber() {
+       REObject re = new REObject("Vilnius", "Vilniaus", "BUk",
+               "A. Jakšto", "2 kambariu butas",
+               "Hydrangeas.jpg", "https://www.youtube.com/watch?v=DMNKqsIkq3I",
+               "https://www.youtube.com/watch?v=DMNKqsIkq3I", "160000",
+               "", "a@kk.vv", true, true, true, true, true, "patalp");
+       re.fillAdvertForm();
+       String actual = Helper.driver.findElement(By.xpath("//span[contains(text(), 'telefono')]")).getText();
+       Assert.assertEquals(actual, "Neteisingas telefono numeris");
+   }
 
     @BeforeClass
     public void beforeClass() {

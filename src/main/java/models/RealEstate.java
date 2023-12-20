@@ -42,7 +42,7 @@ public class RealEstate {
         this.microdistrict = microdistrict.toLowerCase();
         this.street = street.toLowerCase();
         this.discription = discription;
-        this.picture = "C:\\Users\\Public\\Pictures\\Sample Pictures\\" + picture;
+        this.picture = "C:/Users/Asus/IdeaProjects/aruodas/resourses/" + picture;
         this.url = url;
         this.threeDtour = threeDtour;
         this.price = price;
@@ -159,6 +159,7 @@ public class RealEstate {
     }
 
     public void setPhone() {
+        driver.findElement(By.name("phone")).clear();
         driver.findElement(By.name("phone")).sendKeys(phone);
     }
 
