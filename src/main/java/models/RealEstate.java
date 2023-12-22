@@ -82,10 +82,6 @@ public class RealEstate {
         setDetails();
     }
 
-    public void submit() {
-        driver.findElement(By.id("submitFormButton")).click();
-    }
-
     public void setAddressNumber() {
         driver.findElement(By.name("FHouseNum")).sendKeys(addressNumber);
     }
@@ -158,9 +154,7 @@ public class RealEstate {
         driver.findElement(By.id("priceField")).sendKeys(price);
     }
 
-    public void setPhone() {
-        driver.findElement(By.name("phone")).clear();
-        driver.findElement(By.name("phone")).sendKeys(phone);
+    public void setPhone() { driver.findElement(By.name("phone")).sendKeys(phone);
     }
 
     public void setEmail() {

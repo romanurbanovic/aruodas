@@ -23,7 +23,6 @@ public class REObject extends RealEstate {
         driver.get("https://www.aruodas.lt/ideti-skelbima/?obj=10");
         super.fillAdvertForm();
         setObjectType();
-        submit();
     }
 
     @Override

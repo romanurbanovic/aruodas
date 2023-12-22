@@ -11,4 +11,8 @@ public class Helper {
         driver.get("https://www.aruodas.lt/ideti-skelbima");
         driver.findElement(By.id("onetrust-accept-btn-handler")).click();
     }
+
+    public static void submit() {
+        Helper.driver.findElement(By.id("submitFormButton")).click();
+    }
 }
