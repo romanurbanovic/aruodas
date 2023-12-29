@@ -154,8 +154,9 @@ public class RealEstate {
         driver.findElement(By.id("priceField")).sendKeys(price);
     }
 
-    public void setPhone() { driver.findElement(By.name("phone")).sendKeys(phone);
-    }
+    public void setPhone() {
+        driver.findElement(By.name("phone")).clear();
+        driver.findElement(By.name("phone")).sendKeys(phone); }
 
     public void setEmail() {
         driver.findElement(By.name("email")).sendKeys(email);
